@@ -306,7 +306,7 @@ def main():
         st.markdown(
             "**Built with:** Hugging Face Transformers · Streamlit · Plotly\n\n"
             "**Model:** DistilBERT (fine-tuned on SST-2)\n\n"
-            "**Author:** [Sandhya Godavarthy](https://gsandhya.com)"
+            "**Author:** [Sandhya Godavarthy](https://www.linkedin.com/in/sandhya-godavarthy-5072622b/)"
         )
 
     # ─── Load Data ──────────────────────────────────────────────────────

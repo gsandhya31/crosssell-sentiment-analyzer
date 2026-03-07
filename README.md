@@ -141,6 +141,6 @@ MIT
 
 ## Author
 
-**Sandhya Godavarthy** — [gsandhya.com](https://gsandhya.com)
+**Sandhya Godavarthy** — [LinkedIn](https://www.linkedin.com/in/sandhya-godavarthy-5072622b/)
 
 Product Manager with 13+ years in AI/ML product delivery. Built production chatbots and email classification systems processing 17,000+ monthly queries across multiple e-commerce brands. This project demonstrates the product thinking layer that sits on top of ML models — the part that turns a sentiment score into a business decision.

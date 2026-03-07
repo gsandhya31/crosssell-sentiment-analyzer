@@ -1,0 +1,68 @@
+conversation_id,message_number,speaker,message,category,brand
+CONV001,1,customer,"Hi, I ordered a Samsung TV from Croma 3 days ago but haven't received any shipping update yet.",order_tracking,Croma
+CONV001,2,agent,"Hello! I'd be happy to help you with your order status. Let me pull up your order details right away.",order_tracking,Croma
+CONV001,3,customer,"The order ID is CRM-88421. I paid extra for express delivery.",order_tracking,Croma
+CONV001,4,agent,"I can see your order CRM-88421. The Samsung 55-inch TV is currently at the nearest hub and scheduled for delivery tomorrow between 10 AM - 2 PM.",order_tracking,Croma
+CONV001,5,customer,"Oh that's great! Tomorrow works perfectly. Thanks for checking.",order_tracking,Croma
+CONV001,6,agent,"You're welcome! By the way, since you're getting the Samsung TV, would you like to check out our wall mount brackets? We have a great deal running - 40% off on compatible mounts.",cross_sell_attempt,Croma
+CONV001,7,customer,"Actually yes, I was thinking about that. Can you share the link?",cross_sell_success,Croma
+CONV002,1,customer,"This is ridiculous. I've been waiting 2 weeks for my grocery delivery from BigBasket. This is the third time this has happened.",complaint,BigBasket
+CONV002,2,agent,"I sincerely apologize for the delay. I understand how frustrating this must be. Let me check what happened with your order.",complaint,BigBasket
+CONV002,3,customer,"Order BB-55102. I ordered essentials like milk and bread. They're obviously useless now.",complaint,BigBasket
+CONV002,4,agent,"You're absolutely right, and I'm really sorry. I can see the delivery partner had an issue. I'm processing a full refund for you right now, and adding 200 NeuCoins to your account as an apology.",complaint,BigBasket
+CONV002,5,customer,"Fine. The refund better come through quickly this time.",complaint,BigBasket
+CONV002,6,agent,"The refund will reflect in 24-48 hours. Also, we have a fresh delivery slot available today if you'd like to reorder with free express delivery.",cross_sell_attempt,BigBasket
+CONV002,7,customer,"No thanks. I'll just go to the store myself. I don't trust the delivery anymore.",cross_sell_failure,BigBasket
+CONV003,1,customer,"Hey, I need to return a medicine I ordered on 1mg. I got the wrong dosage.",return_request,1mg
+CONV003,2,agent,"I'm sorry to hear that. I'll help you with the return process. Could you share the order ID?",return_request,1mg
+CONV003,3,customer,"It's 1MG-33210. I ordered 500mg tablets but received 250mg. This is a health product, you can't make mistakes like this.",return_request,1mg
+CONV003,4,agent,"You're absolutely right, this is a serious error and I take full responsibility. I've initiated an immediate pickup for the wrong item and expedited the correct 500mg tablets with priority delivery. They should arrive by tomorrow morning.",return_request,1mg
+CONV003,5,customer,"Okay that's better. Please make sure it's the right one this time.",return_request,1mg
+CONV003,6,agent,"I've personally verified the replacement order. You'll receive an SMS with tracking shortly. Is there anything else I can help with?",return_request,1mg
+CONV003,7,customer,"No that's all. Thanks for sorting it out quickly at least.",return_request,1mg
+CONV004,1,customer,"I love the new Tata Neu app! Just used NeuCoins to get a discount on my CliQ order. The integration is seamless.",positive_feedback,CliQ
+CONV004,2,agent,"Thank you so much for the kind words! We're thrilled you're enjoying the Tata Neu experience. Which product did you order from CliQ?",positive_feedback,CliQ
+CONV004,3,customer,"A pair of running shoes from Nike. Got 15% off with NeuCoins. Best deal I've found anywhere.",positive_feedback,CliQ
+CONV004,4,agent,"That's fantastic! Great choice on the Nike shoes. Since you're into running, you might also like our sports accessories collection - we just launched some great fitness bands and running earbuds on CliQ.",cross_sell_attempt,CliQ
+CONV004,5,customer,"Oh nice, I actually do need new earbuds for running. Let me check those out!",cross_sell_success,CliQ
+CONV005,1,customer,"I want to cancel my IHCL hotel booking for next weekend. Something came up.",cancellation,IHCL
+CONV005,2,agent,"I can help with that. May I have your booking reference number?",cancellation,IHCL
+CONV005,3,customer,"IH-7890. It's the Taj in Goa. I know there might be cancellation charges but I really can't make it.",cancellation,IHCL
+CONV005,4,agent,"I see your booking for Taj Holiday Village, Goa. Since it's within 72 hours of check-in, there would normally be a 50% cancellation fee. However, I can convert this to a date change with no extra charge if you'd prefer?",cancellation,IHCL
+CONV005,5,customer,"Actually that would be great. Can I shift it to the weekend after?",cancellation,IHCL
+CONV005,6,agent,"Done! I've moved your booking to the following weekend, same room category. You'll get an updated confirmation email shortly.",cancellation,IHCL
+CONV005,7,customer,"Perfect, thank you so much. You just saved me a lot of money!",cancellation,IHCL
+CONV005,8,agent,"Happy to help! Since you'll be in Goa, would you like me to add the spa package? It's currently 30% off for Tata Neu members.",cross_sell_attempt,IHCL
+CONV005,9,customer,"Yes please! That sounds amazing. Add it to my booking.",cross_sell_success,IHCL
+CONV006,1,customer,"Your Croma service center is a joke. I sent my laptop for repair 3 weeks ago and nobody can tell me when it'll be done.",complaint,Croma
+CONV006,2,agent,"I completely understand your frustration. Three weeks without your laptop is unacceptable. Let me escalate this immediately. What's your service request number?",complaint,Croma
+CONV006,3,customer,"SR-44521. And every time I call I get a different answer. One person says parts are on the way another says it's being tested. Which is it?",complaint,Croma
+CONV006,4,agent,"I've just spoken with the service center. Your laptop repair is in final testing and will be ready for pickup tomorrow. I've also added a 6-month extended warranty at no cost for the inconvenience.",complaint,Croma
+CONV006,5,customer,"Tomorrow? Are you sure? Because I've been told 'tomorrow' before.",complaint,Croma
+CONV006,6,agent,"I understand your skepticism and it's completely valid. I've set up a personal callback for you tomorrow at 11 AM to confirm it's ready before you come in. If there's any further delay I'll arrange a loaner device.",complaint,Croma
+CONV006,7,customer,"Alright fine. I'll wait for the callback. If it's actually ready tomorrow that would be great.",complaint,Croma
+CONV007,1,customer,"Hi! I just wanted to say the BigBasket 10-minute delivery is incredible. Got my groceries so fast!",positive_feedback,BigBasket
+CONV007,2,agent,"That made my day! Thank you for sharing that. Quick delivery is something we're really proud of. What did you order?",positive_feedback,BigBasket
+CONV007,3,customer,"Just some fruits and snacks for a house party tonight. Everything was super fresh too.",positive_feedback,BigBasket
+CONV007,4,agent,"Fresh fruits for a party sounds lovely! By the way, we also have a party essentials collection with beverages, paper plates, and decorations. Want me to share the link?",cross_sell_attempt,BigBasket
+CONV007,5,customer,"Oh yes please! I totally forgot about paper cups. Send me the link!",cross_sell_success,BigBasket
+CONV008,1,customer,"I need to file a complaint about a medicine delivered by 1mg. The packaging was completely damaged and some tablets were exposed.",complaint,1mg
+CONV008,2,agent,"That's very concerning, especially with medication. I'm so sorry this happened. Can you share the order ID and a photo of the damaged packaging?",complaint,1mg
+CONV008,3,customer,"Order 1MG-78432. I'm attaching photos now. This is a blood pressure medication - I can't take tablets that have been exposed like this.",complaint,1mg
+CONV008,4,agent,"You are absolutely right to be cautious. Please do NOT take those tablets. I've arranged a replacement with secure packaging to be delivered within 4 hours via priority delivery. A full refund for the damaged order will be processed immediately.",complaint,1mg
+CONV008,5,customer,"4 hours? Okay that's actually quite fast. I appreciate you taking this seriously.",complaint,1mg
+CONV008,6,agent,"Your health is our top priority. The replacement is already dispatched. You'll get a live tracking link in 2 minutes.",complaint,1mg
+CONV008,7,customer,"Great, thank you. I feel better about this now. As long as the replacement is properly packed.",complaint,1mg
+CONV009,1,customer,"Can someone explain why I was charged twice for my CliQ order? My bank shows two debits of 3499 each.",payment_issue,CliQ
+CONV009,2,agent,"I can understand the concern with a double charge. Let me look into this right away. Could you share your order ID?",payment_issue,CliQ
+CONV009,3,customer,"CLQ-92001. I want this resolved NOW. That's 7000 rupees sitting in limbo.",payment_issue,CliQ
+CONV009,4,agent,"I can see the issue. The first transaction failed but your bank held the amount. The second charge is the actual payment. The first hold of 3499 will auto-release within 3-5 business days. I can also write to your bank to expedite the release.",payment_issue,CliQ
+CONV009,5,customer,"3-5 days? That's not acceptable. I need that money.",payment_issue,CliQ
+CONV009,6,agent,"I completely understand. Let me initiate a refund request letter to your bank right now. With our merchant code, most banks release within 24 hours. I'll also add 350 NeuCoins to your account for the trouble.",payment_issue,CliQ
+CONV009,7,customer,"Okay fine. Send the letter. And make sure those NeuCoins actually show up.",payment_issue,CliQ
+CONV009,8,customer,"Actually I just checked - the NeuCoins are already there. Thanks for being quick on that at least.",payment_issue,CliQ
+CONV010,1,customer,"I booked a room at Taj through IHCL last month and it was the best experience. Just wanted to say thanks to your team.",positive_feedback,IHCL
+CONV010,2,agent,"What a wonderful message to receive! Thank you so much. We're delighted you had a memorable stay. Which property did you visit?",positive_feedback,IHCL
+CONV010,3,customer,"Taj Lake Palace in Udaipur. The staff was incredible and the room upgrade was such a nice surprise.",positive_feedback,IHCL
+CONV010,4,agent,"Taj Lake Palace is truly magical! I'll make sure your feedback reaches the team there. Since you loved Udaipur, you might enjoy our Sawai Madhopur Lodge near Ranthambore - it's perfect for a wildlife weekend getaway.",cross_sell_attempt,IHCL
+CONV010,5,customer,"Ranthambore! I've been wanting to go there. What are the rates for next month?",cross_sell_success,IHCL

@@ -25,6 +25,9 @@ Thumbs.db
 *.db
 .pytest_cache/
 
+# Personal docs
+sandhya_docs/
+
 # Streamlit
 .streamlit/secrets.toml
 .streamlit/config.toml

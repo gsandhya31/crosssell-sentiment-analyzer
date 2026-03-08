@@ -2,7 +2,7 @@
 
 **A sentiment-driven cross-sell decision engine for e-commerce chatbots.**
 
-Most chatbots blindly push product recommendations. This tool analyzes customer sentiment in real-time during a support conversation and answers the question every CX product manager cares about: **"Is this the right moment to cross-sell, or will it backfire?"**
+Most chatbots today recommend products without factoring in the customer's emotional state. This tool analyzes customer sentiment in real-time during a support conversation and answers the question every CX product manager cares about: **"Is this the right moment to cross-sell, or will it backfire?"**
 
 ![Python](https://img.shields.io/badge/Python-3.11+-blue)
 ![HuggingFace](https://img.shields.io/badge/ML-HuggingFace%20Transformers-yellow)
@@ -148,18 +148,24 @@ Replace independent per-message scoring with a **rolling weighted average** of t
 
 The ideal production trigger: **resolved positive** — detect the pattern where sentiment trajectory went negative → agent intervened → sentiment recovered to positive over 2-3 messages. This is a genuine recovery, not grudging acceptance.
 
-### 2. Cascade architecture for scale
+### 2. Cascade architecture for scale — all ML, no LLM dependency
 
-Don't call an expensive model for every message:
-- **Tier 1 (every message):** Cheap, fast model (Twitter RoBERTa, ~50ms, free) handles obvious green/red cases
-- **Tier 2 (yellow zone only):** LLM call with full conversation context for ambiguous cases (~15-20% of conversations)
-- **Tier 3 (batch, post-conversation):** LLM auto-labels cross-sell attempts and outcomes for the dashboard
+The production pipeline uses trained ML models at every tier:
+- **Tier 1 (every message):** Per-message sentiment model (Twitter RoBERTa, ~50ms, free) handles obvious green/red cases — ~80% of conversations
+- **Tier 2 (ambiguous cases):** Conversation-level ML classifier (XGBoost or fine-tuned Transformer) trained on labelled conversations — handles the remaining ~20% using features like sentiment trajectory, resolution patterns, and conversation length
+- **Tier 3 (batch, post-conversation):** Fine-tuned classifier auto-labels cross-sell attempts and outcomes for the analytics dashboard
 
-### 3. Auto-detection of cross-sell attempts
+**Where does an LLM fit?** Only as a bootstrapping tool. When you have zero labelled data, an LLM can generate the first batch of training labels. Once you've collected 5-10K labelled conversations, you train your own classifier and the LLM is no longer needed. The LLM is a stopgap, not a production dependency.
+
+### 3. LLM for crafting the cross-sell pitch message
+
+Classification and scoring don't need an LLM — but crafting the actual cross-sell message does. Once the system decides it's the right moment to pitch, an LLM can generate a personalized recommendation based on conversation context: "Since you just resolved your TV delivery, here's a wall mount that fits your model." This is where LLM creativity genuinely adds value — not in deciding when to sell, but in deciding what to say.
+
+### 4. Auto-detection of cross-sell attempts
 
 Currently the dataset is manually labelled. In production, use keyword rules or an LLM classifier to automatically detect when an agent attempted a cross-sell and whether it was accepted.
 
-### 4. Fine-tune on domain data
+### 5. Fine-tune on domain data
 
 The Twitter RoBERTa model is general-purpose. Fine-tuning on labelled customer support conversations from the specific domain would improve accuracy significantly.
 
@@ -181,6 +187,6 @@ MIT
 
 ## Author
 
-**Sandhya Godavarthy** — [gsandhya.com](https://gsandhya.com)
+**Sandhya Godavarthy** — [LinkedIn](https://www.linkedin.com/in/sandhya-godavarthy-5072622b/)
 
 Product Manager with 13+ years in AI/ML product delivery. Built production chatbots and email classification systems processing 17,000+ monthly queries across multiple e-commerce brands. This project demonstrates the product thinking layer that sits on top of ML models — the part that turns a sentiment score into a business decision.

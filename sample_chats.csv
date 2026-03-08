@@ -20,8 +20,8 @@ CONV003,4,agent,"You're absolutely right, this is a serious error and I take ful
 CONV003,5,customer,"Okay that's better. Please make sure it's the right one this time.",return_request,1mg
 CONV003,6,agent,"I've personally verified the replacement order. You'll receive an SMS with tracking shortly. Is there anything else I can help with?",return_request,1mg
 CONV003,7,customer,"No that's all. Thanks for sorting it out quickly at least.",return_request,1mg
-CONV004,1,customer,"I love the new Tata Neu app! Just used NeuCoins to get a discount on my CliQ order. The integration is seamless.",positive_feedback,CliQ
-CONV004,2,agent,"Thank you so much for the kind words! We're thrilled you're enjoying the Tata Neu experience. Which product did you order from CliQ?",positive_feedback,CliQ
+CONV004,1,customer,"I love the new app! Just used NeuCoins to get a discount on my CliQ order. The integration is seamless.",positive_feedback,CliQ
+CONV004,2,agent,"Thank you so much for the kind words! We're thrilled you're enjoying the app experience. Which product did you order from CliQ?",positive_feedback,CliQ
 CONV004,3,customer,"A pair of running shoes from Nike. Got 15% off with NeuCoins. Best deal I've found anywhere.",positive_feedback,CliQ
 CONV004,4,agent,"That's fantastic! Great choice on the Nike shoes. Since you're into running, you might also like our sports accessories collection - we just launched some great fitness bands and running earbuds on CliQ.",cross_sell_attempt,CliQ
 CONV004,5,customer,"Oh nice, I actually do need new earbuds for running. Let me check those out!",cross_sell_success,CliQ
@@ -32,7 +32,7 @@ CONV005,4,agent,"I see your booking for Taj Holiday Village, Goa. Since it's wit
 CONV005,5,customer,"Actually that would be great. Can I shift it to the weekend after?",cancellation,IHCL
 CONV005,6,agent,"Done! I've moved your booking to the following weekend, same room category. You'll get an updated confirmation email shortly.",cancellation,IHCL
 CONV005,7,customer,"Perfect, thank you so much. You just saved me a lot of money!",cancellation,IHCL
-CONV005,8,agent,"Happy to help! Since you'll be in Goa, would you like me to add the spa package? It's currently 30% off for Tata Neu members.",cross_sell_attempt,IHCL
+CONV005,8,agent,"Happy to help! Since you'll be in Goa, would you like me to add the spa package? It's currently 30% off for app members.",cross_sell_attempt,IHCL
 CONV005,9,customer,"Yes please! That sounds amazing. Add it to my booking.",cross_sell_success,IHCL
 CONV006,1,customer,"Your Croma service center is a joke. I sent my laptop for repair 3 weeks ago and nobody can tell me when it'll be done.",complaint,Croma
 CONV006,2,agent,"I completely understand your frustration. Three weeks without your laptop is unacceptable. Let me escalate this immediately. What's your service request number?",complaint,Croma

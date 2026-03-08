@@ -287,7 +287,7 @@ def main():
         st.subheader("📁 Data Source")
         data_source = st.radio(
             "Choose data source",
-            ["Sample Dataset (Tata Neu style)", "Upload Your Own CSV"]
+            ["Sample Dataset", "Upload Your Own CSV"]
         )
         
         uploaded_file = None

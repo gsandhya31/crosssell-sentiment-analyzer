@@ -27,6 +27,7 @@ Thumbs.db
 
 # Personal docs
 sandhya_docs/
+Sandhya Docs/
 
 # Streamlit
 .streamlit/secrets.toml

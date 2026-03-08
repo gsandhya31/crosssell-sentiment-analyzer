@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cross-Sell Timing Analyzer — Product Overview</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #FAFAF8;
+            --surface: #FFFFFF;
+            --text: #1A1A2E;
+            --text-secondary: #5A5A72;
+            --accent: #667EEA;
+            --accent-light: #EEF0FF;
+            --green: #28A745;
+            --green-bg: #E8F5E9;
+            --yellow: #F9A825;
+            --yellow-bg: #FFF8E1;
+            --red: #DC3545;
+            --red-bg: #FFEBEE;
+            --border: #E8E8EE;
+            --radius: 12px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ─── Header ─── */
+        header {
+            padding: 60px 0 40px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 48px;
+        }
+        header .badge {
+            display: inline-block;
+            background: var(--accent-light);
+            color: var(--accent);
+            font-size: 13px;
+            font-weight: 600;
+            padding: 4px 14px;
+            border-radius: 20px;
+            margin-bottom: 16px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        header h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 42px;
+            line-height: 1.15;
+            margin-bottom: 12px;
+            color: var(--text);
+        }
+        header .subtitle {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 640px;
+        }
+        .meta {
+            margin-top: 24px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        .meta a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .meta a:hover { text-decoration: underline; }
+        .links {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        .links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .links .primary {
+            background: var(--accent);
+            color: white;
+        }
+        .links .primary:hover { background: #5468d4; }
+        .links .secondary {
+            background: var(--surface);
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+        .links .secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+        /* ─── Sections ─── */
+        section { margin-bottom: 56px; }
+        section h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+        section h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            margin-top: 28px;
+            color: var(--text);
+        }
+        p { margin-bottom: 16px; color: var(--text-secondary); }
+        strong { color: var(--text); }
+
+        /* ─── Cards ─── */
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 28px;
+            margin-bottom: 20px;
+        }
+        .card h4 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .card p { margin-bottom: 8px; font-size: 15px; }
+        .card p:last-child { margin-bottom: 0; }
+
+        /* ─── Zone Table ─── */
+        .zone-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 16px;
+            margin: 24px 0;
+        }
+        .zone-card {
+            border-radius: var(--radius);
+            padding: 24px;
+            text-align: center;
+        }
+        .zone-card.green { background: var(--green-bg); border: 1px solid #C8E6C9; }
+        .zone-card.yellow { background: var(--yellow-bg); border: 1px solid #FFE082; }
+        .zone-card.red { background: var(--red-bg); border: 1px solid #EF9A9A; }
+        .zone-card .emoji { font-size: 32px; margin-bottom: 8px; }
+        .zone-card .label { font-weight: 700; font-size: 16px; color: var(--text); }
+        .zone-card .range { font-size: 14px; color: var(--text-secondary); margin: 4px 0 8px; }
+        .zone-card .action { font-size: 14px; font-weight: 600; }
+        .zone-card.green .action { color: var(--green); }
+        .zone-card.yellow .action { color: var(--yellow); }
+        .zone-card.red .action { color: var(--red); }
+
+        /* ─── Decision Cards ─── */
+        .decision {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--accent);
+            border-radius: 0 var(--radius) var(--radius) 0;
+            padding: 24px 28px;
+            margin-bottom: 20px;
+        }
+        .decision .number {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            line-height: 28px;
+            text-align: center;
+            border-radius: 50%;
+            font-size: 14px;
+            font-weight: 700;
+            margin-right: 10px;
+        }
+        .decision h4 {
+            display: inline;
+            font-size: 17px;
+        }
+        .decision p {
+            margin-top: 10px;
+            font-size: 15px;
+        }
+
+        /* ─── Highlight Box ─── */
+        .highlight {
+            background: var(--accent-light);
+            border-radius: var(--radius);
+            padding: 24px 28px;
+            margin: 24px 0;
+        }
+        .highlight p { color: var(--text); margin: 0; }
+        .highlight strong { color: var(--accent); }
+
+        /* ─── Architecture ─── */
+        .tier-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .tier {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 16px;
+            align-items: start;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 20px;
+        }
+        .tier-label {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 6px 0;
+        }
+        .tier-label.t1 { color: var(--green); }
+        .tier-label.t2 { color: var(--yellow); }
+        .tier-label.t3 { color: var(--accent); }
+        .tier-body { font-size: 15px; color: var(--text-secondary); }
+        .tier-body strong { color: var(--text); }
+
+        /* ─── Tech Table ─── */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 15px;
+        }
+        th {
+            background: var(--text);
+            color: white;
+            padding: 12px 16px;
+            text-align: left;
+            font-weight: 600;
+        }
+        th:first-child { border-radius: 8px 0 0 0; }
+        th:last-child { border-radius: 0 8px 0 0; }
+        td {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+        tr:nth-child(even) td { background: #F8F8FC; }
+
+        /* ─── Footer ─── */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 32px 0 48px;
+            margin-top: 48px;
+            text-align: center;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        footer a { color: var(--accent); text-decoration: none; }
+
+        /* ─── Flow Diagram ─── */
+        .flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            flex-wrap: nowrap;
+            margin: 32px 0;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .flow-step {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 14px 20px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        .flow-step.active {
+            background: var(--accent-light);
+            border-color: var(--accent);
+            color: var(--accent);
+            font-weight: 700;
+        }
+        .flow-step.result {
+            background: var(--green-bg);
+            border-color: var(--green);
+            color: var(--green);
+            font-weight: 700;
+        }
+        .flow-arrow { 
+            color: var(--text-secondary); 
+            font-size: 20px; 
+            padding: 0 6px;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 640px) {
+            header h1 { font-size: 30px; }
+            .zone-grid { grid-template-columns: 1fr; }
+            .tier { grid-template-columns: 1fr; }
+            .flow { flex-wrap: wrap; justify-content: center; gap: 8px; }
+            .flow-step { white-space: normal; min-width: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- ─── Header ─── -->
+        <header>
+            <span class="badge">ML + Product Logic</span>
+            <h1>Cross-Sell Timing Analyzer</h1>
+            <p class="subtitle">A sentiment-driven decision engine that tells e-commerce chatbots <strong>when</strong> to cross-sell — and when to hold back.</p>
+            <p class="meta">March 2026 · Built by <a href="https://www.linkedin.com/in/sandhya-godavarthy-5072622b/">Sandhya Godavarthy</a></p>
+            <div class="links">
+                <a href="https://crosssell-sentiment-analyzer-gsandhya.streamlit.app/" class="primary">&#9654; Live Demo</a>
+                <a href="https://github.com/gsandhya31/crosssell-sentiment-analyzer" class="secondary">&#128187; GitHub</a>
+            </div>
+        </header>
+
+        <!-- ─── Opportunity Statement ─── -->
+        <section>
+            <h2>Opportunity Statement</h2>
+            <p>E-commerce chatbots today recommend products without factoring in the customer's emotional state during a support conversation. An agent resolving a frustrated customer's delayed delivery might trigger a cross-sell suggestion — missing the fact that the customer isn't in the right mindset. Conversely, when a customer is genuinely happy after a smooth resolution, the agent misses the optimal window to suggest complementary products.</p>
+            <div class="highlight">
+                <p>The question this project answers: <strong>"Given a live customer conversation, is this the right moment to cross-sell, or will it backfire?"</strong></p>
+            </div>
+        </section>
+
+        <!-- ─── How It Works ─── -->
+        <section>
+            <h2>How It Works</h2>
+            <p>The system uses a <strong>two-layer approach</strong>: an ML model for sentiment scoring and a product logic layer for business decisions.</p>
+
+            <div class="flow">
+                <div class="flow-step">Customer message</div>
+                <span class="flow-arrow">→</span>
+                <div class="flow-step active">ML Model scores sentiment</div>
+                <span class="flow-arrow">→</span>
+                <div class="flow-step active">Product logic decides</div>
+                <span class="flow-arrow">→</span>
+                <div class="flow-step result">✅ Cross-sell &nbsp;/&nbsp; ⏳ Wait &nbsp;/&nbsp; 🛑 Hold back</div>
+            </div>
+
+            <h3>Layer 1: Sentiment Scoring</h3>
+            <p>Each customer message is scored from <strong>-1.0</strong> (very negative) to <strong>+1.0</strong> (very positive) using <strong>Twitter RoBERTa</strong>, a Transformer model pre-trained on 124 million tweets and fine-tuned for 3-class sentiment classification (positive / neutral / negative). Runs locally via HuggingFace — no API key, ~50ms per message.</p>
+
+            <h3>Layer 2: Cross-Sell Decision</h3>
+            <p>The sentiment score feeds into a threshold-based decision engine:</p>
+
+            <div class="zone-grid">
+                <div class="zone-card green">
+                    <div class="emoji">🟢</div>
+                    <div class="label">Green Zone</div>
+                    <div class="range">Score ≥ 0.3</div>
+                    <div class="action">Cross-sell now</div>
+                </div>
+                <div class="zone-card yellow">
+                    <div class="emoji">🟡</div>
+                    <div class="label">Yellow Zone</div>
+                    <div class="range">-0.2 to 0.3</div>
+                    <div class="action">Wait</div>
+                </div>
+                <div class="zone-card red">
+                    <div class="emoji">🔴</div>
+                    <div class="label">Red Zone</div>
+                    <div class="range">Score ≤ -0.2</div>
+                    <div class="action">Hold back</div>
+                </div>
+            </div>
+            <p>Thresholds are <strong>configurable in the UI</strong> — different brands and contexts need different sensitivity.</p>
+        </section>
+
+        <!-- ─── Product Decisions ─── -->
+        <section>
+            <h2>Key Product Decisions</h2>
+
+            <div class="decision">
+                <span class="number">1</span>
+                <h4>Chose 3-class Twitter RoBERTa over 2-class DistilBERT</h4>
+                <p>The initial version used DistilBERT (movie reviews, positive/negative only). Critical flaw: <strong>no neutral class</strong>. A casual "what are you up to?" scored 0.98 positive — triggering a false cross-sell. Twitter RoBERTa adds neutral detection, handles casual language, and was trained on 124M tweets matching the tone of support chat.</p>
+            </div>
+
+            <div class="decision">
+                <span class="number">2</span>
+                <h4>Per-message scoring is MVP — not production-ready</h4>
+                <p>Current implementation scores each message independently. Limitation: a customer furious 2 minutes ago who says "okay thanks" gets scored positive. That's grudging acceptance, not genuine satisfaction.</p>
+                <p><strong>Production-ready approach: trigger on "resolved positive"</strong> — the pattern where (1) customer had a problem, (2) agent resolved it, (3) sentiment genuinely shifted positive over multiple messages. This requires conversation-level context via rolling weighted averages, not per-message scoring.</p>
+            </div>
+
+            <div class="decision">
+                <span class="number">3</span>
+                <h4>Configurable thresholds over hardcoded rules</h4>
+                <p>A luxury hotel brand may want a higher threshold than a grocery service. The UI exposes sliders so product teams tune sensitivity per brand without code changes.</p>
+            </div>
+
+            <div class="decision">
+                <span class="number">4</span>
+                <h4>Cascade architecture for production scale — all ML, no LLM dependency</h4>
+                <p>The production pipeline uses trained ML models at every tier — fast, cheap, and scalable. No LLM required in steady state.</p>
+            </div>
+
+            <div class="tier-grid">
+                <div class="tier">
+                    <div class="tier-label t1">Tier 1</div>
+                    <div class="tier-body"><strong>Every message:</strong> Per-message sentiment model (Twitter RoBERTa, ~50ms, free) handles obvious green/red cases — ~80% of conversations</div>
+                </div>
+                <div class="tier">
+                    <div class="tier-label t2">Tier 2</div>
+                    <div class="tier-body"><strong>Ambiguous cases:</strong> Conversation-level ML classifier (XGBoost or fine-tuned Transformer) trained on labelled conversations — handles the remaining ~20% using features like sentiment trajectory, resolution patterns, and conversation length</div>
+                </div>
+                <div class="tier">
+                    <div class="tier-label t3">Tier 3</div>
+                    <div class="tier-body"><strong>Batch, post-conversation:</strong> Fine-tuned classifier auto-labels cross-sell attempts and outcomes for the analytics dashboard</div>
+                </div>
+            </div>
+
+            <div class="highlight">
+                <p><strong>Where does an LLM fit?</strong> Only as a bootstrapping tool. When you have zero labelled data, an LLM can generate the first batch of training labels — "read this conversation and tell me if a cross-sell was attempted and whether it succeeded." Once you've collected 5-10K labelled conversations this way, you train your own classifier and the LLM is no longer needed. The LLM is a stopgap, not a production dependency.</p>
+            </div>
+
+            <div class="decision">
+                <span class="number">5</span>
+                <h4>Labelled outcomes validate the approach</h4>
+                <p>The dataset includes outcome labels (cross_sell_success / cross_sell_failure). The dashboard proves that cross-selling in positive sentiment windows converts at significantly higher rates than pitches during unresolved complaints.</p>
+            </div>
+        </section>
+
+        <!-- ─── Dashboard ─── -->
+        <section>
+            <h2>Dashboard &amp; Results</h2>
+            <p>The cross-sell performance dashboard aggregates all conversations and answers one question: <strong>does timing actually matter?</strong></p>
+            <div class="card">
+                <h4>What the dashboard shows:</h4>
+                <p>• Customer messages classified by sentiment zone (green / yellow / red)</p>
+                <p>• Cross-sell attempts per zone with acceptance vs rejection counts</p>
+                <p>• Success rate comparison across zones</p>
+                <p>• Auto-generated insight summarizing the conversion multiplier</p>
+                <p>• Detailed log of every attempt with exact pre-pitch sentiment score</p>
+            </div>
+            <div class="highlight">
+                <p><strong>Key finding:</strong> Cross-sell attempts during positive sentiment windows had significantly higher acceptance rates than pitches made during unresolved complaints — validating that timing drives conversion more than content.</p>
+            </div>
+        </section>
+
+        <!-- ─── Dataset ─── -->
+        <section>
+            <h2>Sample Dataset</h2>
+            <p>10 realistic multi-brand e-commerce conversations (67 messages) spanning five Tata Neu ecosystem brands, each with tagged cross-sell outcomes:</p>
+            <table>
+                <tr><th>Brand</th><th>Scenarios</th></tr>
+                <tr><td><strong>Croma</strong></td><td>Order tracking, service complaints</td></tr>
+                <tr><td><strong>BigBasket</strong></td><td>Delivery issues, positive feedback</td></tr>
+                <tr><td><strong>1mg</strong></td><td>Wrong medication, damaged packaging</td></tr>
+                <tr><td><strong>CliQ</strong></td><td>Payment disputes, happy customers</td></tr>
+                <tr><td><strong>IHCL</strong></td><td>Hotel booking changes, upsell opportunities</td></tr>
+            </table>
+        </section>
+
+        <!-- ─── Tech Stack ─── -->
+        <section>
+            <h2>Tech Stack</h2>
+            <table>
+                <tr><th>Component</th><th>Tool</th><th>Why</th></tr>
+                <tr><td><strong>Sentiment Model</strong></td><td>Twitter RoBERTa (3-class)</td><td>Casual language, neutral detection, 124M tweets</td></tr>
+                <tr><td><strong>App Framework</strong></td><td>Streamlit</td><td>Fastest path from script to hosted app</td></tr>
+                <tr><td><strong>Visualization</strong></td><td>Plotly</td><td>Interactive charts with hover data</td></tr>
+                <tr><td><strong>Data</strong></td><td>Pandas</td><td>Standard tabular data processing</td></tr>
+                <tr><td><strong>Hosting</strong></td><td>Streamlit Cloud</td><td>Free, auto-deploys from GitHub</td></tr>
+            </table>
+        </section>
+
+        <!-- ─── Improvements ─── -->
+        <section>
+            <h2>Improvements for Production</h2>
+            <div class="card">
+                <h4>1. Conversation-level sentiment</h4>
+                <p>Replace per-message scoring with rolling weighted averages. Ideal trigger: <strong>resolved positive</strong> — detect the pattern where sentiment went negative → agent intervened → sentiment recovered over 2-3 messages.</p>
+            </div>
+            <div class="card">
+                <h4>2. Auto-detection of cross-sell attempts</h4>
+                <p>Replace manual labelling with keyword rules or an LLM classifier to automatically detect when an agent pitched a product and whether it was accepted.</p>
+            </div>
+            <div class="card">
+                <h4>3. LLM for crafting the cross-sell pitch message</h4>
+                <p>Classification and scoring don't need an LLM — but <strong>crafting the actual cross-sell message does</strong>. Once the system decides it's the right moment to pitch, an LLM can generate a personalized recommendation based on conversation context: "Since you just resolved your TV delivery, here's a wall mount that fits your model." This is where LLM creativity genuinely adds value — not in deciding when to sell, but in deciding what to say.</p>
+            </div>
+            <div class="card">
+                <h4>4. Domain-specific fine-tuning</h4>
+                <p>Fine-tune Twitter RoBERTa on labelled customer support conversations from the specific domain for improved accuracy.</p>
+            </div>
+        </section>
+
+        <footer>
+            <p>Built by <a href="https://www.linkedin.com/in/sandhya-godavarthy-5072622b/">Sandhya Godavarthy</a> · March 2026</p>
+            <p style="margin-top: 8px;"><a href="https://crosssell-sentiment-analyzer-gsandhya.streamlit.app/">Live Demo</a> · <a href="https://github.com/gsandhya31/crosssell-sentiment-analyzer">GitHub</a></p>
+        </footer>
+    </div>
+</body>
+</html>
